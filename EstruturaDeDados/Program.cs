@@ -5,65 +5,80 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Atividade 2
+        // Declaração de vetores 
         int[] VetorA = new int[2];
         int[] VetorB = new int[] { 3, 2, 1 };
         int[] VetorC = { 4, 5, 6 };
 
+        // Utilizando Vetor atravez de acesso direto 
+        Console.WriteLine(VetorA[1]);
+        VetorA[1] = 1;
+        Console.WriteLine(VetorA[1]);
 
-        VetorA[0] = 1;
-        //Console.WriteLine(VetorA[1]);
-
-
+        // Metodos de vetores
+        Console.WriteLine(VetorA.GetValue(1));
         VetorA.SetValue(3, 1);
-        // Console.WriteLine(VetorA.GetValue(1));
+        Console.WriteLine(VetorA.GetValue(1));
 
-        // Atividade 3
-        //EscrverVetor(ref VetorB);
+
+
+        //------ Chamando metodos ------
+
+        //Chamando metodo que percorre vetor e exibe os valores  
+        Console.WriteLine(" Exibindo vetor:");
+        EscrverVetor(ref VetorB);
         //EscrverVetor(ref VetorC);
         //EscrverVetor(ref VetorA);
 
 
-        // Atividade 4
-        //int[] VetorX = { 32, 23, 444, 67};
-        //Console.WriteLine(BuscarNoVetor(ref  VetorX, 4));
+        // Chamando metodo que busca sequencialmente um valor em tevor e retorna o indice
+        Console.WriteLine("Busca sequencial");
+        int[] VetorX = { 32, 23, 444, 67};
+        int valor = 4;
+        int posicao = BuscaSequencial(ref VetorX, valor);
+        if (posicao >= 0)
+        {
+            Console.WriteLine("Ao busca o valor "+ valor +" foi encontrado no indice"+ posicao );
+        }
+        else
+        {
+            Console.WriteLine("O valor " + valor + " não foi encontrado no vetor");
+        }
 
-        // Atividade 5
+        // Chamando metodo de remoção em um vetor
         int[] VetorY = { 4, 3, 2, 1 };
-        //   EscrverVetor(ref VetorY);
-        //Console.WriteLine("Apagando !!!");
-        //RemoverItem(ref VetorY, 1);
-        //EscrverVetor(ref VetorY);
+        int indici = 1;
+        EscrverVetor(ref VetorY);
+        Console.WriteLine("Apagando posição com o índici"+ indici);
+        RemoverItem(ref VetorY, indici);
+        EscrverVetor(ref VetorY);
+        Console.WriteLine("Removido !!!");
 
 
-        //ativida 6
+        // 
         EscrverVetor(ref VetorY);
         Console.WriteLine("Ordenando !!!");
         Ordena(ref VetorY);
         EscrverVetor(ref VetorY);
-        for ( int contodora = 0; contodora < 10 ; contodora++ ){
-            Console.WriteLine(contodora);
-
-        }
+       
 
     }
-    //Atividade 3
+
+    // Percorendo vetor para exibir os valores 
     static void EscrverVetor(ref int[] vetor)
     {
         for (int contadora = 0; contadora < vetor.Length; contadora++)
         {
             Console.WriteLine(vetor[contadora]);
-
         }
 
     }
 
-    //Atividade 4
-    static int BuscarNoVetor(ref int[] vetor, int valor)
+    // Busca sequencial de valores em um vetor
+    static int BuscaSequencial(ref int[] vetor, int valor)
     {
         for (int contadora = 0; contadora < vetor.Length; contadora++)
         {
-
             if (valor == vetor[contadora])
             {
                 Console.WriteLine("achei");
@@ -71,11 +86,9 @@ class Program
             }
         }
         return -1;
-
     }
 
-    // Atividade 5
-
+    // Remoção em um vetor
     static void RemoverItem(ref int[] Vetor, int index)
     {
         for (int i = index; i < Vetor.Length - 1; i++)
@@ -83,25 +96,31 @@ class Program
             Vetor[i] = Vetor[i + 1];
         }
         Array.Resize(ref Vetor, Vetor.Length - 1);
-
     }
+
 
     static void Ordena(ref int[] vetor)
     {
+        //int contaPer=0;
+        //int contaTroca=0;
         int temp;
         for (int ii = vetor.Length; ii >= 1; ii--)
         {
 
             for (int i = 0; i < ii - 1; i++)
             {
+                //contaPer++;
                 if (vetor[i] > vetor[i + 1])
                 {
+                    //contaTroca++;
                     temp = vetor[i];
                     vetor[i] = vetor[i + 1];
                     vetor[i + 1] = temp;
                 }
             }
         }
+        //Console.WriteLine(contaPer);
+        //Console.WriteLine(contaTroca);
     }
 
 }
