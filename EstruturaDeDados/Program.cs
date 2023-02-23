@@ -58,9 +58,17 @@ class Program
         // 
         EscrverVetor(ref VetorY);
         Console.WriteLine("Ordenando !!!");
-        Ordena(ref VetorY);
+        OrdenaBubble(ref VetorY);
         EscrverVetor(ref VetorY);
-       
+
+        //dsad
+        VetorY =new int[] { 4, 3, 2, 1 };
+        Console.WriteLine("section");
+        EscrverVetor(ref VetorY);
+        Console.WriteLine("Ordenando !!!");
+        OrdenaSelect(ref VetorY);
+        EscrverVetor(ref VetorY);
+
 
     }
 
@@ -99,7 +107,7 @@ class Program
     }
 
 
-    static void Ordena(ref int[] vetor)
+    static void OrdenaBubble(ref int[] vetor)
     {
         //int contaPer=0;
         //int contaTroca=0;
@@ -118,6 +126,27 @@ class Program
                     vetor[i + 1] = temp;
                 }
             }
+        }
+        //Console.WriteLine(contaPer);
+        //Console.WriteLine(contaTroca);
+    }
+    static void OrdenaSelect(ref int[] vetor)
+    {
+        //int contaPer=0;
+        //int contaTroca=0;
+        int aux;
+        int min;
+        for (int ii = 0; ii < vetor.Length-1; ii++)
+        {
+            min = ii;
+            for (int i = ii+1; i < vetor.Length; i++)
+                //contaPer++;
+                if (vetor[i] < vetor[min])
+                    min=i;
+            //contaTroca++;
+            aux = vetor[ii];
+            vetor[ii] = vetor[min];
+            vetor[min] = aux;
         }
         //Console.WriteLine(contaPer);
         //Console.WriteLine(contaTroca);
