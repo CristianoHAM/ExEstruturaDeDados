@@ -45,7 +45,7 @@ class Program
             Console.WriteLine("O valor " + valor + " não foi encontrado no vetor");
         }
 
-        // Chamando metodo de remoção em um vetor
+        // Chamando metodo de remoção em um vetor i
         int[] VetorY = { 4, 3, 2, 1 };
         int indici = 1;
         EscrverVetor(ref VetorY);
